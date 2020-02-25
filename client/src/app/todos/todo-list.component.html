@@ -1,0 +1,93 @@
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+
+    <mat-card class="search-card">
+      <mat-card-header>
+        <mat-card-title class="todo-list-title">Todos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayout="column" >
+
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <!-- Examples of filtering in Angular -->
+
+          <mat-form-field class="input-field">
+            <mat-label>Owner</mat-label>
+            <input matInput id="todo-owner-input" placeholder="Filter by owner"
+            [(ngModel)]="todoOwner" (input)="updateFilter()">
+            <mat-hint>Filter on Angular</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="input-field">
+            <mat-label>Category</mat-label>
+            <input matInput id="todo-category-input" placeholder="Filter by category"
+            [(ngModel)]="todoCategory" (input)="updateFilter()">
+            <mat-hint>Filter on Angular</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <!-- Examples of filtering on the server -->
+
+          <mat-form-field class="input-field">
+            <mat-label>Status</mat-label>
+            <mat-select (selectionChange)="getTodosFromServer()"  [(ngModel)]="todoStatus" id="todo-status-select">
+              <mat-option>--</mat-option>
+              <mat-option value="complete">True</mat-option>
+              <mat-option value="incomplete">False</mat-option>
+            </mat-select>
+            <mat-hint>Filter on Server</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="input-field">
+            <mat-label>Body</mat-label>
+            <input matInput id="todo-body-input" placeholder="Filter by body"
+            [(ngModel)]="todoBody" (input)="updateFilter()">
+            <mat-hint>Filter on Angular</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="input-field">
+            <mat-label>Limit</mat-label>
+            <input matInput id="todo-limit-input" placeholder="limit of todos"
+            [(ngModel)]="todoLimit" (input)="getTodosFromServer()">
+            <mat-hint>Filtered on Server</mat-hint>
+          </mat-form-field>
+
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" *ngIf="serverFilteredTodos; else todosError" >
+
+      <!-- List view -->
+        <mat-card-content>
+          <mat-nav-list class="todo-nav-list">
+            <h3 mat-subheader>Todos</h3>
+             <mat-list-item *ngFor="let todo of this.filteredTodos" class="todo-list-item">
+              <h3 matLine class="todo-list-owner"> {{todo.owner}} </h3>
+              <p matLine class="todo-list-category"> {{todo.category}} </p>
+              <p matLine class="todo-list-body">{{todo.body}}</p>
+              <p matLine class="todo-list-status">{{todo.status}}</p>
+             </mat-list-item>
+          </mat-nav-list>
+        </mat-card-content>
+
+  </div>
+
+  <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+  <ng-template #todosError>
+    <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" class="todo-error">
+      <mat-error>
+        There was a problem loading the users. Possibly the server is down or perhaps there are network
+        issues.
+      </mat-error>
+      <mat-error>
+        Please wait a bit and try again or start the server.
+      </mat-error>
+    </div>
+  </ng-template>
+
+</div>
