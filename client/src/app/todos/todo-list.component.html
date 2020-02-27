@@ -26,33 +26,24 @@
         </div>
 
         <div fxLayout="row wrap" fxLayoutGap="10px">
-          <!-- Examples of filtering on the server -->
 
           <mat-form-field class="input-field">
             <mat-label>Status</mat-label>
-            <mat-select (selectionChange)="getTodosFromServer()"  [(ngModel)]="todoStatus" id="todo-status-select">
+            <mat-select matSelect id = "todo-status-input"
+            [(ngModel)]="todoStatus" (input)="updateFilter()">
               <mat-option>--</mat-option>
               <mat-option value="complete">True</mat-option>
               <mat-option value="incomplete">False</mat-option>
             </mat-select>
-            <mat-hint>Filter on Server</mat-hint>
+            <mat-hint>Filter on Angular</mat-hint>
           </mat-form-field>
 
           <mat-form-field class="input-field">
             <mat-label>Body</mat-label>
             <input matInput id="todo-body-input" placeholder="Filter by body"
             [(ngModel)]="todoBody" (input)="updateFilter()">
-            <mat-hint>Filter on Angular</mat-hint>
+            <mat-hint>Filter on Server</mat-hint>
           </mat-form-field>
-
-          <mat-form-field class="input-field">
-            <mat-label>Limit</mat-label>
-            <input matInput id="todo-limit-input" placeholder="limit of todos"
-            [(ngModel)]="todoLimit" (input)="getTodosFromServer()">
-            <mat-hint>Filtered on Server</mat-hint>
-          </mat-form-field>
-
-
         </div>
       </mat-card-content>
     </mat-card>

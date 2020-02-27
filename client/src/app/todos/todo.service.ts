@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Todo } from './todo';
@@ -75,7 +75,6 @@ export class TodoService {
         return todo.category.toLowerCase().indexOf(filters.category) !== -1;
       });
     }
-
 
     return filteredTodos;
   }

@@ -19,7 +19,6 @@ export class TodoListComponent implements OnInit, OnDestroy  {
   public todoStatus: '';
   public todoCategory: string;
   public todoBody: string;
-  public todoLimit: number;
   getTodosSub: Subscription;
 
 
@@ -36,7 +35,6 @@ export class TodoListComponent implements OnInit, OnDestroy  {
   getTodosFromServer() {
     this.todoService.getTodos({
       status: this.todoStatus,
-      limit: this.todoLimit
     }).subscribe(returnedTodos => {
       this.serverFilteredTodos = returnedTodos;
       this.updateFilter();
