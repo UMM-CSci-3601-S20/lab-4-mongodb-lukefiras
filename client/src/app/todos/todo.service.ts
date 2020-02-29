@@ -12,13 +12,9 @@ export class TodoService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getTodos(filters?: { status?: string, owner?: string, body?: string, category?: string, limit?: number}): Observable<Todo[]> {
+  getTodos(filters?: { status?: boolean, owner?: string, body?: string, category?: string}): Observable<Todo[]> {
     let httpParams: HttpParams = new HttpParams();
     if (filters) {
-
-      if (filters.status) {
-        httpParams = httpParams.set('status', filters.status);
-      }
 
       if (filters.owner) {
         httpParams = httpParams.set('owner', filters.owner);
@@ -32,8 +28,8 @@ export class TodoService {
         httpParams = httpParams.set('category', filters.category);
       }
 
-      if (filters.limit) {
-        httpParams = httpParams.set('limit', filters.limit.toString());
+      if (filters.status) {
+        httpParams = httpParams.set('status', filters.status.toString());
       }
     }
     return this.httpClient.get<Todo[]>(this.todoUrl, {
@@ -45,7 +41,7 @@ export class TodoService {
     return this.httpClient.get<Todo>(this.todoUrl + '/' + id);
   }
 
-  filterTodos(todos: Todo[], filters: { owner?: string, body?: string, category?: string}): Todo[] {
+  filterTodos(todos: Todo[], filters: { owner?: string, body?: string, category?: string, status?: boolean}): Todo[] {
 
     let filteredTodos = todos;
 
@@ -76,6 +72,12 @@ export class TodoService {
       });
     }
 
+    // Filter by status
+    if (filters.status) {
+      filteredTodos = filteredTodos.filter(todo => {
+        return todo.status.toString().toLowerCase().indexOf(filters.category) !== -1;
+      });
+    }
     return filteredTodos;
   }
 

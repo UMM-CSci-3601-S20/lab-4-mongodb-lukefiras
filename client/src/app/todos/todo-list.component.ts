@@ -16,7 +16,7 @@ export class TodoListComponent implements OnInit, OnDestroy  {
   public filteredTodos: Todo[];
 
   public todoOwner: string;
-  public todoStatus: '';
+  public todoStatus: boolean;
   public todoCategory: string;
   public todoBody: string;
   getTodosSub: Subscription;
@@ -33,11 +33,10 @@ export class TodoListComponent implements OnInit, OnDestroy  {
   }
 
   getTodosFromServer() {
-    this.todoService.getTodos({
-      status: this.todoStatus,
-    }).subscribe(returnedTodos => {
+    this.todoService.getTodos({}).subscribe(returnedTodos => {
       this.serverFilteredTodos = returnedTodos;
       this.updateFilter();
+      console.log(this.todoStatus);
     }, err => {
       console.log(err);
     });
@@ -45,7 +44,7 @@ export class TodoListComponent implements OnInit, OnDestroy  {
 
   public updateFilter() {
     this.filteredTodos = this.todoService.filterTodos(
-      this.serverFilteredTodos, { owner: this.todoOwner, body: this.todoBody, category: this.todoCategory });
+      this.serverFilteredTodos, { owner: this.todoOwner, body: this.todoBody, category: this.todoCategory, status: this.todoStatus });
   }
 
   /**

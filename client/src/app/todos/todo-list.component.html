@@ -26,8 +26,7 @@
 
           <mat-form-field class="input-field">
             <mat-label>Status</mat-label>
-            <mat-select matSelect id = "todo-status-input"
-            [(ngModel)]="todoStatus" (input)="updateFilter()">
+            <mat-select (selectionChange)="updateFilter()"  [(ngModel)]="todoStatus" id="todo-status-select">
               <mat-option>--</mat-option>
               <mat-option value="complete">True</mat-option>
               <mat-option value="incomplete">False</mat-option>
