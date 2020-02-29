@@ -8,20 +8,17 @@
       <mat-card-content fxLayout="column" >
 
         <div fxLayout="row wrap" fxLayoutGap="10px">
-          <!-- Examples of filtering in Angular -->
 
           <mat-form-field class="input-field">
             <mat-label>Owner</mat-label>
             <input matInput id="todo-owner-input" placeholder="Filter by owner"
             [(ngModel)]="todoOwner" (input)="updateFilter()">
-            <mat-hint>Filter on Angular</mat-hint>
           </mat-form-field>
 
           <mat-form-field class="input-field">
             <mat-label>Category</mat-label>
             <input matInput id="todo-category-input" placeholder="Filter by category"
             [(ngModel)]="todoCategory" (input)="updateFilter()">
-            <mat-hint>Filter on Angular</mat-hint>
           </mat-form-field>
         </div>
 
@@ -35,14 +32,12 @@
               <mat-option value="complete">True</mat-option>
               <mat-option value="incomplete">False</mat-option>
             </mat-select>
-            <mat-hint>Filter on Angular</mat-hint>
           </mat-form-field>
 
           <mat-form-field class="input-field">
             <mat-label>Body</mat-label>
             <input matInput id="todo-body-input" placeholder="Filter by body"
             [(ngModel)]="todoBody" (input)="updateFilter()">
-            <mat-hint>Filter on Server</mat-hint>
           </mat-form-field>
         </div>
       </mat-card-content>
@@ -68,7 +63,6 @@
 
   </div>
 
-  <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
   <ng-template #todosError>
     <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" class="todo-error">
       <mat-error>
