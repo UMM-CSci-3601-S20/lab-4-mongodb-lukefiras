@@ -25,20 +25,26 @@ export class AddTodoComponent implements OnInit {
     owner: [
       {type: 'required', message: 'Owner is required'},
       {type: 'minlength', message: 'Owner must be at least 2 characters long'},
-      {type: 'maxlength', message: 'Owner cannot be more than 50 characters long'},
+      {type: 'maxlength', message: 'Owner cannot be more than 10 characters long'},
       {type: 'pattern', message: 'Owner must contain only numbers and letters'},
     ],
 
     status: [
-      {type: 'required', message: 'Status is required'}
+      {type: 'required', message: 'Status is required'},
     ],
 
     body: [
-      {type: 'required', message: 'Body is required'}
+      {type: 'required', message: 'Body is required'},
+      {type: 'minlength', message: 'Body must be at least 2 characters long'},
+      {type: 'maxlength', message: 'Body cannot be more than 250 characters long'},
+      {type: 'pattern', message: 'Body must contain only numbers and letters'},
     ],
 
     category: [
-      {type: 'required', message: 'Category is required' }
+      {type: 'required', message: 'Category is required'},
+      {type: 'minlength', message: 'Category must be at least 2 characters long'},
+      {type: 'maxlength', message: 'Category cannot be more than 25 characters long'},
+      {type: 'pattern', message: 'Category must contain only numbers and letters'},
     ]
   };
 
@@ -50,7 +56,7 @@ export class AddTodoComponent implements OnInit {
       owner: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2),
-        Validators.maxLength(50),
+        Validators.maxLength(10),
         Validators.pattern('^[A-Za-z0-9\\s]+[A-Za-z0-9\\s]+$(\\.0-9+)?'),
       ])),
 
@@ -60,10 +66,16 @@ export class AddTodoComponent implements OnInit {
 
       body: new FormControl('', Validators.compose([
         Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(250),
+        Validators.pattern('^[A-Za-z0-9\\s]+[A-Za-z0-9\\s]+$(\\.0-9+)?'),
       ])),
 
       category: new FormControl('', Validators.compose([
         Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(25),
+        Validators.pattern('^[A-Za-z0-9\\s]+[A-Za-z0-9\\s]+$(\\.0-9+)?'),
       ]))
 
     });
