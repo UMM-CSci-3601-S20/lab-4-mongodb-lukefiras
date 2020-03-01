@@ -33,7 +33,9 @@ export class TodoListComponent implements OnInit, OnDestroy  {
   }
 
   getTodosFromServer() {
-    this.todoService.getTodos({}).subscribe(returnedTodos => {
+    this.todoService.getTodos({
+      owner: this.todoOwner,
+    }).subscribe(returnedTodos => {
       this.serverFilteredTodos = returnedTodos;
       this.updateFilter();
     }, err => {
@@ -43,7 +45,7 @@ export class TodoListComponent implements OnInit, OnDestroy  {
 
   public updateFilter() {
     this.filteredTodos = this.todoService.filterTodos(
-      this.serverFilteredTodos, { owner: this.todoOwner, body: this.todoBody, category: this.todoCategory, status: this.todoStatus });
+      this.serverFilteredTodos, { body: this.todoBody, category: this.todoCategory, status: this.todoStatus });
   }
 
   /**

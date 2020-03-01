@@ -89,19 +89,6 @@ public class TodoController {
       filters.add(regex("owner", ctx.queryParam("owner"), "i"));
     }
 
-    if (ctx.queryParamMap().containsKey("body")) {
-      filters.add(regex("body", ctx.queryParam("body"), "i"));
-    }
-
-    if (ctx.queryParamMap().containsKey("category")) {
-      filters.add(regex("category", ctx.queryParam("category"), "i"));
-    }
-
-    if (ctx.queryParamMap().containsKey("status")) {
-      String currentStatus = ctx.queryParam("status", Boolean.class.toString());
-      filters.add(regex("status", currentStatus, "i"));
-    }
-
     String sortBy = ctx.queryParam("sortby", "owner"); //Sort by sort query param, default is owner
     String sortOrder = ctx.queryParam("sortorder", "asc");
 
