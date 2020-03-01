@@ -19,8 +19,6 @@ export class AddTodoComponent implements OnInit {
   constructor(private fb: FormBuilder, private todoService: TodoService, private snackBar: MatSnackBar, private router: Router) {
   }
 
-  // not sure if this name is magical and making it be found or if I'm missing something,
-  // but this is where the red text that shows up (when there is invalid input) comes from
   add_todo_validation_messages = {
     owner: [
       {type: 'required', message: 'Owner is required'},
@@ -89,10 +87,10 @@ export class AddTodoComponent implements OnInit {
 
   submitForm() {
     this.todoService.addTodo(this.addTodoForm.value).subscribe(newID => {
-      this.snackBar.open('Added Todo ' + this.addTodoForm.value.name, null, {
+      this.snackBar.open('Added Todo ' + this.addTodoForm.value.owner, null, {
         duration: 2000,
       });
-      this.router.navigate(['/todos/', newID]);
+      this.router.navigate(['/todos/']);
     }, err => {
       this.snackBar.open('Failed to add the todo', null, {
         duration: 2000,

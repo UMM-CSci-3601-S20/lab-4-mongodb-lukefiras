@@ -28,8 +28,8 @@
             <mat-label>Status</mat-label>
             <mat-select (selectionChange)="updateFilter()"  [(ngModel)]="todoStatus" id="todo-status-select">
               <mat-option>--</mat-option>
-              <mat-option value="complete">True</mat-option>
-              <mat-option value="incomplete">False</mat-option>
+              <mat-option value="true">True</mat-option>
+              <mat-option value="false">False</mat-option>
             </mat-select>
           </mat-form-field>
 
