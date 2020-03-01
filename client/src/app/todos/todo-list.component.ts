@@ -36,7 +36,6 @@ export class TodoListComponent implements OnInit, OnDestroy  {
     this.todoService.getTodos({}).subscribe(returnedTodos => {
       this.serverFilteredTodos = returnedTodos;
       this.updateFilter();
-      console.log(this.todoStatus);
     }, err => {
       console.log(err);
     });

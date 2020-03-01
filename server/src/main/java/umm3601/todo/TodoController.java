@@ -99,7 +99,6 @@ public class TodoController {
 
     if (ctx.queryParamMap().containsKey("status")) {
       String currentStatus = ctx.queryParam("status", Boolean.class.toString());
-      System.out.println(currentStatus);
       filters.add(regex("status", currentStatus, "i"));
     }
 

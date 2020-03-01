@@ -64,7 +64,8 @@ public class Server {
     // Add new user
     server.post("api/users/new", userController::addNewUser);
 
-
+    // Add new todo
+    server.post("api/todos/new", todoController::addNewTodo);
 
     server.exception(Exception.class, (e, ctx) -> {
       ctx.status(500);
