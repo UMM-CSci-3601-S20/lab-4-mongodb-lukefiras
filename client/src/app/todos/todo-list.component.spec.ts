@@ -19,6 +19,7 @@ import { Todo } from './todo';
 import { TodoListComponent } from './todo-list.component';
 import { TodoService } from './todo.service';
 import { MatIconModule } from '@angular/material/icon';
+import { subscribeOn } from 'rxjs/operators';
 
 const COMMON_IMPORTS: any[] = [
   FormsModule,
