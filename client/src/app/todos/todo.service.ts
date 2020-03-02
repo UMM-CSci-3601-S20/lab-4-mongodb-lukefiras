@@ -17,8 +17,8 @@ export class TodoService {
     if (filters) {
 
       // Filter by owner
-      if (filters.owner){
-        httpParams = httpParams.set('owner',filters.owner);
+      if (filters.owner) {
+        httpParams = httpParams.set('owner', filters.owner);
       }
     }
     return this.httpClient.get<Todo[]>(this.todoUrl, {
@@ -55,7 +55,6 @@ export class TodoService {
     // Filter by status
     if (filters.status) {
       filteredTodos = filteredTodos.filter(todo => {
-        console.log(todo.status);
         return todo.status.toString().indexOf(filters.status.toString()) !== -1;
       });
     }
