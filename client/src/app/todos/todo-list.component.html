@@ -52,14 +52,13 @@
           <mat-nav-list class="todo-nav-list">
             <h3 mat-subheader>Todos</h3>
               <mat-expansion-panel *ngFor="let todo of this.filteredTodos" class="todo-list-panel">
-                <mat-expansion-panel-header>
-                  <mat-panel-title matLine class ="todo-list-owner">
-                    Owner: {{todo.owner}} <br /> ID: {{todo._id}}
+                <mat-expansion-panel-header matLine class="todo-list-panel-header">
+                  <mat-panel-title matLine class="todo-list-title">
+                    Owner: {{todo.owner}} <br /> Category: {{todo.category}} <br /> Status: {{todo.status}}
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <p>Category: {{todo.category}}</p>
-                <p>Body: {{todo.body}}</p>
-                <p>Status: {{todo.status}}</p>
+                <p class="todo-list-body">Body: {{todo.body}}</p>
+                <mat-divider></mat-divider>
               </mat-expansion-panel>
           </mat-nav-list>
         </mat-card-content>

@@ -139,6 +139,13 @@ describe('Todo service: ', () => {
     expect(todoService.filterTodos(testTodos, { category: todoCategory, body: todoBody }).length).toBe(2);
   });
 
+  it('filterTodos() filters by body and status', () => {
+    expect(testTodos.length).toBe(4);
+    const todoBody = 'This';
+    const todoStatus = true;
+    expect(todoService.filterTodos(testTodos, { body: todoBody, status: todoStatus }).length).toBe(3);
+  });
+
   it('addTodo() calls api/todos/new', () => {
 
     todoService.addTodo(testTodos[1]).subscribe(
