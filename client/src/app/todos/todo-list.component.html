@@ -53,13 +53,13 @@
             <h3 mat-subheader>Todos</h3>
               <mat-expansion-panel *ngFor="let todo of this.filteredTodos" class="todo-list-panel">
                 <mat-expansion-panel-header>
-                  <mat-panel-title matLine class ="todo-list-owner">
-                    Owner: {{todo.owner}} <br /> ID: {{todo._id}}
+                  <mat-panel-title matLine class="todo-list-owner">
+                    Owner: {{todo.owner}} <br />
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <p>Category: {{todo.category}}</p>
-                <p>Body: {{todo.body}}</p>
-                <p>Status: {{todo.status}}</p>
+                <p class="todo-list-category">Category: {{todo.category}}</p>
+                <p class="todo-list-body">Body: {{todo.body}}</p>
+                <p class="todo-list-status">Status: {{todo.status}}</p>
               </mat-expansion-panel>
           </mat-nav-list>
         </mat-card-content>
